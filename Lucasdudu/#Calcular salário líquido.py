@@ -1,0 +1,45 @@
+#Calcular salário líquido
+def calcular_INSS(salario):
+    if salario >= 1800:
+        return salario*0.11
+    else:
+        return salario*0.09
+    
+def calcular_Valetransporte(salario):
+    if salario >= 1500:
+        return 0.06
+    else:
+        return 0.05
+    
+def calcular_bonus(salario):
+    if salario >=1240:
+        return 700
+    else:
+        return 500
+    
+def definir_cargo(salario):
+    if salario >= 3000:
+        return "acionista"
+    elif salario >= 2000:
+        return "gerente"
+    else:
+        return "vendedor"
+    
+def calcular_salario_liquido(salario, INSS, vale, bonus):
+    liquido = salario - (INSS+vale)+bonus
+    return liquido
+
+nome=input("digite seu nome: ")
+salario=float(input("digite seu salario bruto: "))
+INSS=calcular_INSS(salario)
+Vale=calcular_Valetransporte(salario)
+bonus=calcular_bonus(salario)
+cargo=definir_cargo(salario)
+liquido=calcular_salario_liquido(salario, INSS, Vale, bonus)
+print("\nresultado")
+print(f"nome: {nome}")
+print(f"cargo: {cargo}")
+print(f"inss: R${INSS:.2f}")
+print(f"vale transporte: R${Vale:.2f}")
+print(f"bonus: R${bonus:.2f}")
+print(f"salario líquido: R${liquido:.2f}")
